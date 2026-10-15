@@ -123,7 +123,7 @@ function PlatosPaginados() {
                 )}
 
                 {platos.length === 0 ?
-                    <p className="estado">No hay platos para mostrar.</p>
+                    <p className="estado">No se han encontrado platos que coincidan con tu búsqueda.</p>
                     : (
                         <div className="cards">
                             {platos.map(function (plato) {
