@@ -122,20 +122,24 @@ function PlatosPaginados() {
                     </div>
                 )}
 
-                {platos.length === 0 ?
-                    <p className="estado">No se han encontrado platos que coincidan con tu búsqueda.</p>
-                    : (
-                        <div className="cards">
-                            {platos.map(function (plato) {
-                                return (
-                                    <PlatoCard
-                                        key={plato.id}
-                                        plato={plato}
-                                    />
-                                );
-                            })}
-                        </div>
-                    )}
+               {!cargando && platos.length === 0 && (
+                    <p className="estado">
+                        No se han encontrado platos que coincidan con tu búsqueda.
+                    </p>
+                )}
+
+                {!cargando && platos.length > 0 && (
+                    <div className="cards">
+                        {platos.map(function (plato) {
+                            return (
+                                <PlatoCard
+                                    key={plato.id}
+                                    plato={plato}
+                                />
+                            );
+                        })}
+                    </div>
+                )}
 
                 {totalPaginas > 1 && (
                     <Paginacion
