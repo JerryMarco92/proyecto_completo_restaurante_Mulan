@@ -1,0 +1,58 @@
+.resumen {
+    margin: 2rem 0 1rem;
+
+    color: var(--color-texto);
+
+    text-align: center;
+
+    font-size: 0.95rem;
+}
+
+
+.paginador {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    gap: 0.5rem;
+
+    margin: 1.5rem 0;
+}
+
+
+.paginador .boton-estilo {
+    padding: 0.6rem 0.9rem;
+
+    font-family: var(--fuente-texto);
+    font-size: 0.9rem;
+}
+
+
+.paginador .botonNumeroPagina {
+    min-width: 2.5rem;
+}
+
+
+.paginador .botonNumeroPagina:disabled {
+    background-color: var(--color-titulos);
+    color: var(--color-fondo);
+
+    cursor: default;
+}
+
+
+@media (max-width: 500px) {
+
+    .paginador {
+        gap: 0.3rem;
+    }
+
+    .paginador .boton-estilo {
+        padding: 0.5rem 0.7rem;
+    }
+
+    .paginador .botonNumeroPagina {
+        min-width: 2.2rem;
+    }
+
+}

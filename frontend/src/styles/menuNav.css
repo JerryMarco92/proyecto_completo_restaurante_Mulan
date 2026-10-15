@@ -1,0 +1,159 @@
+/* =========================
+   BUSCADOR
+   ========================= */
+form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+}
+.menu__search {
+    margin-bottom: 1.5rem;
+    display: block;
+}
+
+.menu__search label {
+    display: block;
+
+    margin-bottom: 0.5rem;
+
+    color: var(--color-titulos);
+    font-family: var(--fuente-titulos);
+    font-size: 1.2rem;
+}
+
+.menu__search-input {
+    width: 35%;
+    min-width: 280px;
+
+    padding: 0.75rem 1rem;
+
+    border: 1px solid var(--color-secundarios);
+    border-radius: 4px;
+
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+
+    font-family: var(--fuente-texto);
+    font-size: 0.95rem;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+.menu__search-input:focus {
+    outline: none;
+
+    border-color: var(--color-titulos);
+
+    box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.15);
+}
+
+
+--------------------------
+
+.menu-nav {
+    width: 100%;
+}
+
+.menu-nav__toggle {
+    display: none;
+}
+
+.menu-nav__list {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 0.75rem;
+
+    margin: 0;
+    padding: 0;
+
+    list-style: none;
+}
+
+.menu-nav__item {
+    margin: 0;
+    padding: 0;
+}
+
+.menu-nav__button {
+    padding: 0.75rem 1.25rem;
+
+    border-radius: 4px;
+
+    background-color: transparent;
+
+    font-family: var(--fuente-titulos);
+    font-size: 1rem;
+    cursor: pointer;
+}
+
+.menu-nav__button:focus-visible {
+    outline: 2px solid var(--color-hover);
+    outline-offset: 3px;
+}
+
+
+@media (max-width: 725px) {
+
+    nav {
+        margin: auto;
+        max-width: 70%;
+    }
+
+    .menu-nav__toggle {
+        display: block;
+
+        width: 100%;
+        padding: 0.9rem 1rem;
+
+        cursor: pointer;
+    }
+
+    .menu-nav__list {
+        display: none;
+
+        flex-direction: column;
+        align-items: stretch;
+
+        gap: 0.5rem;
+
+        margin-top: 0.5rem;
+        padding: 0.75rem;
+
+        border: 1px solid var(--color-secundarios);
+        border-radius: 4px;
+
+        background-color: var(--color-fondo);
+    }
+
+    .menu-nav__list--abierto {
+        display: flex;
+    }
+
+    .menu-nav__button {
+        width: 100%;
+
+        padding: 0.9rem 1rem;
+
+        text-align: center;
+
+        border: none;
+        border-bottom: 1px solid var(--color-secundarios);
+
+        border-radius: 0;
+    }
+
+    .menu-nav__item:last-child .menu-nav__button {
+        border-bottom: none;
+    }
+
+    .menu-nav__button:hover {
+        background-color: var(--color-fondo-principal);
+        color: var(--color-hover);
+    }
+}

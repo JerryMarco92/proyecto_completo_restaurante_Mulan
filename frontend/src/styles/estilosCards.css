@@ -1,0 +1,19 @@
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+
+    margin-top: 40px;
+    
+}
+
+@media (max-width: 725px) {
+  .cards{
+    width: 100%;
+  }
+  .cards .card h3{
+    font-family: var(--fuente-texto);
+    
+  }
+}

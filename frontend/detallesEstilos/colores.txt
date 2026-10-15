@@ -1,0 +1,19 @@
+Paleta de colores y especificaciones visuales:
+
+Rojo imperial__#8B0000__Fondos principales
+Negro ebano__#0A0A0A__Fondo general de la web
+Oro elegante__#D4AF37__Tipografia principal y detalles decorativos
+Oro brillante__#FFD700__Estados hover o resaltados
+Gris piedra__#4A4A4A__Textos secundarios
+Blanco crema__#F5F5DC__Textos de lectura, mejor legibilidad
+
+Tipografia:
+Titulos__Serif clasicas(Playfair Display o Cinzel)
+Cuerpo de texto__Sans-serif limpia(Monserrat o Lato)
+
+Efectos_uso de degradados sutiles de negro a rojoImperial
+y bordes dorados finos (1px) para tarjetas y contenedores.
+
+Texturas: Aplicar la textura de seda roja en secciones especificas 
+para profundidad visual.
+

@@ -1,0 +1,155 @@
+:root {
+    --gold: #c9a342;
+    --gold-light: #f1d77a;
+    --gold-dark: #806018;
+}
+
+
+.page-frame {
+    position: relative;
+    isolation: isolate;
+}
+
+/* Esquinas del marco principal */
+
+.corner {
+    position: absolute;
+    display: block;
+      z-index: 10;
+    width: 42px;
+    height: 42px;
+    border: 2px solid var(--gold);
+    pointer-events: none;
+}
+
+.corner::before,
+.corner::after {
+    content: "";
+    position: absolute;
+    border: 1px solid var(--gold-light);
+}
+
+.corner::before {
+    inset: 6px;
+}
+
+.corner::after {
+    inset: 13px;
+    border-color: var(--gold-dark);
+}
+
+.corner--top-left {
+    top: -19px;
+    left: -19px;
+}
+
+.corner--top-right {
+    top: -19px;
+    right: -19px;
+}
+
+.corner--bottom-left {
+    bottom: -19px;
+    left: -19px;
+}
+
+.corner--bottom-right {
+    right: -19px;
+    bottom: -19px;
+}
+
+.frame-accent {
+    position: absolute;
+    display: block;
+    background: var(--gold);
+    pointer-events: none;
+    z-index: 10;
+}
+
+.frame-accent--top,
+.frame-accent--bottom {
+    width: 104px;
+    height: 2px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.frame-accent--top {
+    top: 11px;
+}
+
+.frame-accent--bottom {
+    bottom: 11px;
+}
+
+.frame-accent--left,
+.frame-accent--right {
+    width: 2px;
+    height: 104px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.frame-accent--left {
+    left: 11px;
+}
+
+.frame-accent--right {
+    right: 11px;
+}
+
+.page-frame::before,
+.page-frame::after {
+    content: "";
+    position: absolute;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.page-frame::before {
+    inset: 11px;
+    border: 2px solid transparent;
+    border-top-color: var(--gold-dark);
+    border-bottom-color: var(--gold-dark);
+
+    clip-path: polygon(
+        0 0,
+        45% 0,
+        45% 5px,
+        55% 5px,
+        55% 0,
+        100% 0,
+        100% 100%,
+        55% 100%,
+        55% calc(100% - 5px),
+        45% calc(100% - 5px),
+        45% 100%,
+        0 100%
+    );
+}
+.page-frame::after {
+    content: "";
+    position: absolute;
+    inset: 11px;
+    z-index: -1;
+    pointer-events: none;
+
+    border-left: 2px solid var(--gold-dark);
+    border-right: 2px solid var(--gold-dark);
+}
+
+@media (max-width: 820px) {
+    .page-frame {
+        border: none;
+    }
+
+    .page-frame .corner,
+    .page-frame .frame-accent {
+        display: none;
+    }
+
+    .page-frame::before,
+    .page-frame::after {
+        display: none;
+    }
+}

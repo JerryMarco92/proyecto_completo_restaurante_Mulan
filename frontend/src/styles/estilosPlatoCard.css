@@ -1,0 +1,104 @@
+.card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    flex: 0 1 240px;
+    width: 240px;
+
+    background-color: rgba(10, 10, 10, 0.85);
+
+    border: 1px solid var(--color-secundarios);
+    border-radius: 8px;
+
+    color: var(--color-texto);
+
+    text-align: center;
+
+    transition:
+        transform 0.25s ease,
+        border-color 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* TÍTULO FIJO*/
+
+.card h3 {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 100%;
+    height: 5rem;
+    box-sizing: border-box;
+
+    margin: 0;
+    padding: 1rem 1.5rem;
+
+    color: var(--color-titulos);
+
+    font-size: 1.35rem;
+    font-weight: 600;
+}
+
+
+
+/* IMAGEN */
+
+.card__image {
+    display: block;
+
+    width: 100%;
+    height: auto;
+
+    object-fit: cover;
+
+    border-radius: 6px;
+
+    border: 1px solid var(--color-secundarios);
+}
+
+
+
+/* PRECIO */
+
+.card__price {
+    margin: 1rem;
+
+    color: var(--color-hover);
+
+    font-family: var(--fuente-titulos);
+    font-size: 1.3rem;
+}
+
+.card .plato-detalle__volver {
+    margin-bottom: 1rem;
+}
+
+
+/* HOVER */
+
+.card:hover {
+    transform: translateY(-4px);
+
+    border-color: var(--color-titulos);
+
+    box-shadow:
+        0 6px 20px rgba(0, 0, 0, 0.4),
+        0 0 10px rgba(212, 175, 55, 0.08);
+}
+
+
+
+@media (max-width: 725px) {
+    .card__ingredients {
+        display: none;
+    }
+    
+    .card__price{
+        font-family: var(--fuente-texto);
+        font-size: 1.4rem;
+        }
+}

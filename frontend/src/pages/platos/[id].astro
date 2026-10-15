@@ -1,0 +1,138 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+  const API_URL =
+    import.meta.env.PUBLIC_API_URL || "http://localhost:3000";
+
+  const limite = 13;
+
+  const respuesta = await fetch(
+    `${API_URL}/platos?pagina=1&limite=${limite}`
+  );
+
+  if (!respuesta.ok) {
+    throw new Error(
+      `No se pudieron obtener los platos: ${respuesta.status}`
+    );
+  }
+
+  const datos = await respuesta.json();
+  const total = Number(datos.total);
+  const totalPaginas = Math.ceil(total / limite);
+
+  const platos = [...datos.platos];
+
+  for (let pagina = 2; pagina <= totalPaginas; pagina++) {
+    const respuestaPagina = await fetch(
+      `${API_URL}/platos?pagina=${pagina}&limite=${limite}`
+    );
+
+    if (!respuestaPagina.ok) {
+      throw new Error(
+        `No se pudo obtener la página ${pagina} de platos`
+      );
+    }
+
+    const datosPagina = await respuestaPagina.json();
+    platos.push(...datosPagina.platos);
+  }
+
+  return Promise.all(
+    platos.map(async (plato) => {
+      const respuestaDetalle = await fetch(
+        `${API_URL}/platos/${plato.id}`
+      );
+
+      if (!respuestaDetalle.ok) {
+        throw new Error(
+          `No se pudo obtener el detalle del plato ${plato.id}`
+        );
+      }
+
+      const detalle = await respuestaDetalle.json();
+
+      return {
+        params: {
+          id: String(plato.id),
+        },
+        props: {
+          plato: detalle,
+        },
+      };
+    })
+  );
+}
+
+const { plato } = Astro.props;
+
+const tieneGluten =
+  plato.alergenos?.includes("Gluten") ?? false;
+
+const tieneMarisco =
+  plato.alergenos?.includes("Marisco") ?? false;
+---
+
+<Layout title={plato.nombre}>
+  <section class="plato-detalle">
+    {plato.imagen && (
+      <img
+        src={plato.imagen.trim()}
+        alt={plato.nombre}
+        class="plato-detalle__imagen"
+      />
+    )}
+
+    <div class="plato-detalle__info">
+      <h1 class="plato-detalle__titulo">
+        {plato.nombre}
+      </h1>
+
+      {tieneGluten && (
+        <div class="plato-detalle__alergeno plato-detalle__alergeno--gluten">
+          <img
+            src="/iconosAlergenos/gluten30.png"
+            alt="Contiene gluten"
+          />
+          <span>Gluten</span>
+        </div>
+      )}
+
+      {tieneMarisco && (
+        <div class="plato-detalle__alergeno plato-detalle__alergeno--marisco">
+          <img
+            src="/iconosAlergenos/gamba48.png"
+            alt="Contiene marisco"
+          />
+          <span>Marisco</span>
+        </div>
+      )}
+
+      <p class="plato-detalle__campo">
+        <span class="plato-detalle__etiqueta">
+          Ingredientes:
+        </span>
+        {" "}{plato.ingredientes}
+      </p>
+
+      <p class="plato-detalle__campo">
+        <span class="plato-detalle__etiqueta">
+          Categoría:
+        </span>
+        {" "}{plato.categoria_nombre}
+      </p>
+
+      <p class="plato-detalle__precio">
+        {Number(plato.precio).toFixed(2)} €
+      </p>
+
+      <a
+        class="plato-detalle__volver boton-estilo"
+        href="/"
+        onclick="history.back(); return false;"
+      >
+        Volver
+      </a>
+    </div>
+  </section>
+</Layout>

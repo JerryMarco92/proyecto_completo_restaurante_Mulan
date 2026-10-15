@@ -1,0 +1,107 @@
+:root {
+    /* Colores según función */
+    --color-fondo: #0A0A0A;
+    --color-fondo-principal: #8B0000;
+    --color-hover-fondo: #39130B;
+
+    --color-titulos: #D4AF37;
+    --color-hover: #FFD700;
+    --gold-dark: #806018;
+
+    --color-secundarios: #4A4A4A;
+    --color-texto: #F5F5DC;
+
+    /* Tipografías */
+    --fuente-titulos: "Playfair Display", serif;
+    --fuente-texto: "Montserrat", sans-serif;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: var(--color-fondo);
+    color: var(--color-texto);
+}
+
+
+.page-frame {
+    width: 90%;
+    max-width: 1200px;
+    margin: 20px auto 0;
+    padding: 13px 13px ;
+
+     border: 2px solid var(--color-titulos);
+}
+
+main {
+    border-top: 1px solid var(--gold-dark);
+    background:
+        linear-gradient(
+            rgba(10, 10, 10, 0.35),
+            rgba(10, 10, 10, 0.35)
+        ),
+        url("/img/fondo-textura.png") center / cover no-repeat;
+
+    padding: 40px;
+}
+
+
+
+button, a{
+    cursor: pointer;
+}
+
+.estado{
+    padding: 1.2rem;
+    border: 1px solid var(--color-texto);
+    border-radius: 10px;
+    color: var(--color-texto);
+    width: fit-content;
+}
+
+.error{
+    background-color: var(--color-texto);
+    color:  var(--color-fondo-principal);
+    border: 1px solid var(--color-fondo-principal);
+}
+
+/* BOTONES Y ENLACES */
+
+.boton-estilo {
+    border: 1px solid var(--color-titulos);
+    border-radius: 6px;
+
+    color: var(--color-titulos);
+    background: transparent;
+
+    transition:
+        background-color 0.2s ease,
+        color 0.2s ease;
+}
+
+.boton-estilo:hover:not(:disabled) {
+    background-color: var(--color-titulos);
+    color: var(--color-fondo);
+}
+
+.boton-estilo:disabled {
+    cursor: default;
+    background-color: var(--color-hover-fondo);
+    color: var(--color-secundarios);
+    border-color: var(--color-secundarios);
+}
+
+
+@media (max-width: 820px) {
+    .page-frame {
+        width: 100%;
+        border: none;
+        margin: 0 auto;
+        padding: 0 ;
+    }
+
+}

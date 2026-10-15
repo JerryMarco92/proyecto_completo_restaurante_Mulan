@@ -1,0 +1,63 @@
+---
+import "../styles/header.css";
+
+const pathname = Astro.url.pathname;
+---
+
+<header class="site-header">
+
+    <nav class="site-nav" aria-label="Navegación principal">
+        <ul class="site-nav__list">
+
+            <li class="site-nav__item">
+                <a
+                    class="site-nav__link"
+                    href="/"
+                    aria-current={pathname === "/" ? "page" : undefined}
+                >
+                    Inicio
+                </a>
+            </li>
+
+            <li class="site-nav__item">
+                <a
+                    class="site-nav__link"
+                    href="/contacto"
+                    aria-current={pathname === "/contacto" ? "page" : undefined}
+                >
+                    Contáctanos
+                </a>
+            </li>
+
+            <li class="site-nav__item">
+                <a
+                    class="site-nav__link"
+                    href="/nosotros"
+                    aria-current={pathname === "/nosotros" ? "page" : undefined}
+                >
+                    Nosotros
+                </a>
+            </li>
+
+            <li class="site-nav__item">
+                <a
+                    class="site-nav__link"
+                    href="/menus"
+                    aria-current={pathname === "/menus" ? "page" : undefined}
+                >
+                    Menús
+                </a>
+            </li>
+
+        </ul>
+    </nav>
+
+    <section class="hero" aria-labelledby="hero-title">
+        <h1 class="hero__title" id="hero-title">Mulan</h1>
+
+        <p class="hero__subtitle">
+            Restaurante asiático en Alzira
+        </p>
+    </section>
+
+</header>
