@@ -42,8 +42,8 @@ Requisitos
 Node.js, npm y Git.
 
 1. Clonar el repositorio
-git clone URL_DEL_REPOSITORIO
-cd NOMBRE_DEL_REPOSITORIO
+git clone https://github.com/JerryMarco92/proyecto_completo_restaurante_Mulan.git
+cd proyecto_completo_restaurante_Mulan
 
 2. Configurar el backend
 cd back
