@@ -116,6 +116,12 @@ function PlatosPaginados() {
                     onCambioBusqueda={cambiarTextoBusqueda}
                 />
 
+                {cargando && (
+                    <div className="estado-carga" role="status">
+                        <div className="spinner"></div>
+                    </div>
+                )}
+
                 {platos.length === 0 ?
                     <p className="estado">No hay platos para mostrar.</p>
                     : (
